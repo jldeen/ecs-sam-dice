@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Base Architecture - ECR
+
+Parameters:
+  Tag:
+    Description: tag name for image
+    Type: String
+    Default: latest
+
+Resources:  
+  ECRRepo:
+    Type: AWS::ECR::Repository
+    Properties:
+      EmptyOnDelete: true
+
+Outputs:
+  RepositoryUrl:
+    Description: URL of the repo
+    Value: !GetAtt ECRRepo.RepositoryUri
+    Export:
+      Name:
+        'Fn::Sub': '${AWS::StackName}-RepositoryUri'
