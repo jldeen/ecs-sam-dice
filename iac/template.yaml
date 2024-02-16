@@ -91,6 +91,8 @@ Resources:
           Environment:
             - Name: TABLE_NAME
               Value: !Ref DiceTable
+            - Name: DYNAMODB_CONFIG
+              Value: Remote
           PortMappings:
             - ContainerPort: 80
           LogConfiguration:
